@@ -1,31 +1,34 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obstacle-Aware Navigation System | OOP Project Portfolio</title>
+    <title>Obstacle-Aware Navigation System | GAJANAN PAWAR | OOP Project Portfolio</title>
     
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <style>
         :root {
-            --primary-dark: #0a0a0f;
-            --secondary-dark: #121218;
-            --accent-blue: #2563eb;
-            --accent-green: #10b981;
-            --accent-purple: #8b5cf6;
+            --primary-dark: #0f172a;
+            --secondary-dark: #1e293b;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-success: #10b981;
+            --accent-warning: #f59e0b;
             --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
             --card-bg: rgba(30, 41, 59, 0.7);
             --glass-bg: rgba(15, 23, 42, 0.8);
-            --gradient-1: linear-gradient(135deg, #10b981, #2563eb);
-            --gradient-2: linear-gradient(135deg, #8b5cf6, #3b82f6);
-            --neon-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+            --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --gradient-secondary: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         * {
@@ -36,24 +39,26 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--primary-dark);
             color: var(--text-primary);
             overflow-x: hidden;
+            line-height: 1.6;
             background-image: 
-                radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
         }
 
-        /* Header */
-        .developer-header {
-            background: rgba(10, 10, 15, 0.9);
+        /* Professional Header */
+        .professional-header {
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.2rem 3rem;
+            padding: 1rem 2rem;
             position: fixed;
             top: 0;
             width: 100%;
@@ -61,47 +66,77 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.3s ease;
         }
 
-        .logo-container {
+        .header-scrolled {
+            padding: 0.8rem 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .logo-brand {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
+            text-decoration: none;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-1);
-            border-radius: 10px;
+        .brand-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: pulse 2s infinite;
         }
 
-        .logo-text {
-            font-family: 'Orbitron', sans-serif;
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .brand-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
             font-weight: 600;
-            font-size: 1.3rem;
-            background: linear-gradient(to right, var(--accent-green), var(--accent-blue));
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        .nav-links {
+        .brand-tagline {
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            font-weight: 400;
+        }
+
+        .nav-container {
             display: flex;
-            gap: 2.5rem;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
         }
 
         .nav-link {
             color: var(--text-secondary);
             text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
             position: relative;
-            transition: color 0.3s;
         }
 
         .nav-link:hover {
@@ -111,32 +146,37 @@
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient-1);
-            transition: width 0.3s;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
         }
 
         .nav-link:hover::after {
             width: 100%;
         }
 
-        .contact-btn {
-            background: var(--gradient-1);
+        .cta-button {
+            background: var(--gradient-primary);
             color: white;
             padding: 0.7rem 1.5rem;
             border-radius: 8px;
             text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
             font-weight: 500;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        .contact-btn:hover {
+        .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: var(--neon-shadow);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
         }
 
         /* Hero Section */
@@ -144,57 +184,75 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 120px 3rem 3rem;
+            padding: 120px 2rem 4rem;
             position: relative;
             overflow: hidden;
         }
 
-        .hero-content {
+        .hero-container {
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
             position: relative;
             z-index: 2;
         }
 
-        .hero-badge {
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+        }
+
+        .project-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.8rem;
-            background: rgba(16, 185, 129, 0.1);
-            padding: 0.8rem 1.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0.8rem 1.2rem;
             border-radius: 50px;
             margin-bottom: 2rem;
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(10px);
         }
 
-        .hero-badge i {
-            color: var(--accent-green);
+        .project-badge i {
+            color: var(--accent-primary);
+        }
+
+        .project-badge span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
         }
 
         .hero-title {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 3.5rem;
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 1.5rem;
-            background: linear-gradient(to right, var(--text-primary), var(--accent-green));
+            background: linear-gradient(to right, var(--text-primary), var(--accent-primary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            max-width: 600px;
-            line-height: 1.8;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+            max-width: 90%;
         }
 
         .hero-stats {
             display: flex;
             gap: 3rem;
-            margin-top: 4rem;
+            margin-top: 2rem;
         }
 
         .stat-item {
@@ -202,10 +260,10 @@
         }
 
         .stat-number {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 2.5rem;
             font-weight: 600;
-            background: var(--gradient-1);
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -219,160 +277,300 @@
             letter-spacing: 1px;
         }
 
-        /* Floating Elements */
-        .floating-element {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
-            filter: blur(40px);
-            animation: float 20s infinite linear;
-        }
-
-        .floating-1 {
-            top: 10%;
-            right: 10%;
-            animation-delay: 0s;
-        }
-
-        .floating-2 {
-            bottom: 20%;
-            left: 10%;
-            animation-delay: -10s;
-        }
-
-        /* Developer Cards */
-        .dev-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
             margin-bottom: 2rem;
         }
 
-        .dev-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(16, 185, 129, 0.5);
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .dev-card::before {
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+        }
+
+        .feature-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .visual-container {
+            position: relative;
+            background: var(--glass-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+        }
+
+        .visual-container::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 1px;
-            background: var(--gradient-1);
+            background: var(--gradient-primary);
             animation: scanline 3s linear infinite;
         }
 
-        .card-header {
+        .code-window {
+            background: #0f172a;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .window-header {
+            background: #1e293b;
+            padding: 1rem;
             display: flex;
             align-items: center;
-            gap: 1.2rem;
-            margin-bottom: 2rem;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .window-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .window-dot.red { background: #f87171; }
+        .window-dot.yellow { background: #fbbf24; }
+        .window-dot.green { background: #10b981; }
+
+        .window-title {
+            margin-left: 1rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Main Content Sections */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--accent-primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--text-primary), var(--accent-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: var(--shadow-xl);
         }
 
         .card-icon {
             width: 60px;
             height: 60px;
-            background: var(--gradient-2);
-            border-radius: 15px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .card-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
             font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
 
         /* Tech Stack */
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin: 2rem 0;
+            gap: 0.75rem;
+            margin-top: 2rem;
         }
 
         .tech-tag {
             background: rgba(30, 41, 59, 0.8);
-            padding: 0.8rem 1.5rem;
-            border-radius: 10px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tech-tag::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .tech-tag:hover::before {
-            left: 100%;
+            transition: all 0.3s ease;
         }
 
         .tech-tag:hover {
-            border-color: var(--accent-green);
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-primary);
+            border-color: rgba(59, 130, 246, 0.3);
             transform: translateY(-2px);
         }
 
-        /* Architecture Visualization */
-        .arch-diagram {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .arch-node {
-            background: var(--card-bg);
-            border-radius: 15px;
+        /* OOP Principles */
+        .principle-card {
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-radius: 12px;
             padding: 2rem;
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .arch-node:hover {
+        .principle-card:hover {
+            background: rgba(59, 130, 246, 0.1);
             transform: translateY(-5px);
-            border-color: var(--accent-blue);
         }
 
-        .node-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .node-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-1);
+        .principle-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .principle-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .principle-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         /* Code Preview */
@@ -419,39 +617,6 @@
         .code-class { color: #fbbf24; }
         .code-operator { color: #c084fc; }
 
-        /* OOP Principles */
-        .oop-principles {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .principle-card {
-            background: rgba(16, 185, 129, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            transition: transform 0.3s;
-        }
-
-        .principle-card:hover {
-            transform: translateY(-5px);
-            background: rgba(16, 185, 129, 0.15);
-        }
-
-        .principle-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
         /* Simulation Demo */
         .demo-container {
             text-align: center;
@@ -490,38 +655,141 @@
         .cell-obstacle { background: #ef4444; color: white; }
         .cell-visited { background: rgba(16, 185, 129, 0.3); }
 
-        /* Footer */
-        .dev-footer {
-            background: var(--secondary-dark);
-            padding: 4rem 2rem 2rem;
-            margin-top: 6rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        /* Working Algorithm */
+        .algorithm-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .footer-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+        .step-card {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .footer-section h3 {
-            font-family: 'Orbitron', sans-serif;
+        .step-card:hover {
+            transform: translateX(5px);
+            border-color: var(--accent-primary);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
             font-size: 1.2rem;
-            margin-bottom: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
             color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 24px;
+            padding: 4rem;
+            margin-top: 4rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-primary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-label {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-value {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .contact-value a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--accent-primary);
         }
 
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
         .social-link {
-            width: 45px;
-            height: 45px;
+            width: 44px;
+            height: 44px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
             display: flex;
@@ -529,66 +797,125 @@
             justify-content: center;
             color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
         .social-link:hover {
-            background: var(--gradient-1);
+            background: var(--gradient-primary);
             color: white;
             transform: translateY(-3px);
         }
 
+        /* Footer */
+        .footer {
+            background: rgba(15, 23, 42, 0.9);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
         /* Animations */
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
-        }
-
         @keyframes scanline {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
 
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .developer-header {
-                padding: 1rem;
-                flex-direction: column;
-                gap: 1rem;
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
             
-            .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
             }
             
             .hero-title {
                 font-size: 2.5rem;
             }
             
-            .hero-subtitle {
-                font-size: 1.1rem;
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
             }
             
-            .hero-stats {
-                flex-direction: column;
-                gap: 1.5rem;
+            .grid-4 {
+                grid-template-columns: 1fr;
             }
             
-            .dev-card {
-                padding: 1.5rem;
+            .section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .contact-section {
+                padding: 2rem;
             }
             
             .demo-grid {
@@ -602,7 +929,24 @@
             }
         }
 
-        /* Scroll Animation */
+        /* Utility Classes */
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .glass-effect {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -616,206 +960,300 @@
     </style>
 </head>
 <body>
-    <!-- Developer Header -->
-    <header class="developer-header">
-        <div class="logo-container">
-            <div class="logo-icon">
+    <!-- Professional Header -->
+    <header class="professional-header" id="header">
+        <a href="#hero" class="logo-brand">
+            <div class="brand-icon">
                 <i class="fas fa-robot"></i>
             </div>
-            <div class="logo-text">Obstacle-Aware Navigation</div>
-        </div>
-        
-        <nav class="nav-links">
-            <a href="#overview" class="nav-link">Overview</a>
-            <a href="#architecture" class="nav-link">Architecture</a>
-            <a href="#oop" class="nav-link">OOP Principles</a>
-            <a href="#code" class="nav-link">Code</a>
-            <a href="#demo" class="nav-link">Demo</a>
-        </nav>
-        
-        <a href="#contact" class="contact-btn">
-            <i class="fas fa-paper-plane"></i> Contact
+            <div class="brand-text">
+                <span class="brand-name">OOP Navigation System</span>
+                <span class="brand-tagline">KLE Technological University</span>
+            </div>
         </a>
+        
+        <nav class="nav-container">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#overview" class="nav-link">Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#architecture" class="nav-link">Architecture</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#oop" class="nav-link">OOP Principles</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#code" class="nav-link">Code</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#demo" class="nav-link">Demo</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            
+            <a href="https://github.com/GAJANANPAWAR-AR" target="_blank" class="cta-button">
+                <i class="fab fa-github"></i> View GitHub
+            </a>
+        </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section" id="overview">
-        <div class="hero-content fade-in">
-            <div class="hero-badge">
-                <i class="fas fa-code-branch"></i>
-                <span>Object Oriented Programming Project</span>
-            </div>
-            
-            <h1 class="hero-title">
-                Obstacle-Aware<br>
-                Navigation System
-            </h1>
-            
-            <p class="hero-subtitle">
-                A sophisticated simulation of autonomous navigation using Object-Oriented Programming principles. 
-                Demonstrates encapsulation, abstraction, inheritance, and polymorphism through a working robot 
-                simulation with obstacle avoidance capabilities.
-            </p>
-            
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number">4</div>
-                    <div class="stat-label">OOP Principles</div>
+    <section class="hero-section" id="hero">
+        <div class="hero-container">
+            <div class="hero-grid">
+                <div class="hero-content fade-in">
+                    <div class="project-badge">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Object Oriented Programming Course Project</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Obstacle-Aware<br>
+                        Navigation System
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        A sophisticated simulation of autonomous navigation implementing core OOP principles. 
+                        This project demonstrates encapsulation, abstraction, inheritance, and polymorphism 
+                        through a working robotic simulation with intelligent obstacle avoidance.
+                    </p>
+                    
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="feature-text">Complete OOP implementation with 4 main classes</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="feature-text">Dual visualization modes (Console & Graphical)</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="feature-text">Real-time obstacle detection and avoidance</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">20</div>
+                            <div class="stat-label">Simulation Steps</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">OOP Principles</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Display Modes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#demo" class="btn-primary">
+                            <i class="fas fa-play"></i> Try Live Demo
+                        </a>
+                        <a href="https://github.com/GAJANANPAWAR-AR" target="_blank" class="btn-secondary">
+                            <i class="fab fa-github"></i> View Source Code
+                        </a>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">20</div>
-                    <div class="stat-label">Simulation Steps</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">Display Modes</div>
+                
+                <div class="hero-visual fade-in">
+                    <div class="visual-container animate__animated animate__fadeIn">
+                        <div class="code-window">
+                            <div class="window-header">
+                                <div class="window-dot red"></div>
+                                <div class="window-dot yellow"></div>
+                                <div class="window-dot green"></div>
+                                <div class="window-title">robot_navigation.py</div>
+                            </div>
+                            <pre class="code-content"><span class="code-keyword">class</span> <span class="code-class">Robot</span>:
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-keyword">self</span>, x, y):
+        <span class="code-comment"># Encapsulated position data</span>
+        <span class="code-keyword">self</span>.x = x
+        <span class="code-keyword">self</span>.y = y
+        <span class="code-keyword">self</span>.direction = random.choice(
+            [<span class="code-string">"up"</span>, <span class="code-string">"down"</span>, <span class="code-string">"left"</span>, <span class="code-string">"right"</span>]
+        )
+
+    <span class="code-keyword">def</span> <span class="code-function">navigate</span>(<span class="code-keyword">self</span>, grid, sensor):
+        <span class="code-comment"># Decision-making logic</span>
+        next_pos = <span class="code-keyword">self</span>.next_position()
+        
+        <span class="code-keyword">if</span> sensor.detect(grid, *next_pos):
+            <span class="code-comment"># Change direction if obstacle ahead</span>
+            <span class="code-keyword">self</span>.change_direction()
+            <span class="code-keyword">return</span> <span class="code-string">"obstacle_avoided"</span>
+        
+        <span class="code-keyword">self</span>.move()
+        <span class="code-keyword">return</span> <span class="code-string">"movement_successful"</span></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="floating-element floating-1"></div>
-        <div class="floating-element floating-2"></div>
     </section>
 
-    <!-- Main Content -->
-    <main style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-        <!-- System Architecture -->
-        <section id="architecture" class="fade-in">
-            <div class="dev-card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-sitemap"></i>
-                    </div>
-                    <h2 class="card-title">System Architecture</h2>
+    <!-- Architecture Section -->
+    <section class="section" id="overview">
+        <div class="section-header">
+            <span class="section-label">System Architecture</span>
+            <h2 class="section-title">Modular Design Structure</h2>
+            <p class="section-subtitle">
+                Four independent components working together to create an intelligent navigation system
+            </p>
+        </div>
+        
+        <div class="grid-4">
+            <div class="card fade-in">
+                <div class="card-icon">
+                    <i class="fas fa-layer-group"></i>
                 </div>
-                
-                <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
-                    The system follows a modular architecture with four main components, each representing 
-                    a real-world concept in robotics. This design allows for easy extension, testing, 
-                    and maintenance.
+                <h3 class="card-title">Grid Class</h3>
+                <p class="card-description">
+                    Represents the environment with obstacle positions and boundaries. 
+                    Handles coordinate validation and grid display.
                 </p>
-                
-                <div class="arch-diagram">
-                    <div class="arch-node">
-                        <div class="node-header">
-                            <div class="node-icon">
-                                <i class="fas fa-th"></i>
-                            </div>
-                            <h3>Grid Class</h3>
-                        </div>
-                        <p style="color: var(--text-secondary);">Represents the environment with obstacles and boundaries. Handles coordinate validation and display.</p>
-                    </div>
-                    
-                    <div class="arch-node">
-                        <div class="node-header">
-                            <div class="node-icon">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <h3>Robot Class</h3>
-                        </div>
-                        <p style="color: var(--text-secondary);">The autonomous agent with position, direction, and movement capabilities. Implements navigation logic.</p>
-                    </div>
-                    
-                    <div class="arch-node">
-                        <div class="node-header">
-                            <div class="node-icon">
-                                <i class="fas fa-satellite-dish"></i>
-                            </div>
-                            <h3>Sensor Class</h3>
-                        </div>
-                        <p style="color: var(--text-secondary);">Simulates obstacle detection. Checks if a position contains an obstacle before the robot moves.</p>
-                    </div>
-                    
-                    <div class="arch-node">
-                        <div class="node-header">
-                            <div class="node-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h3>Controller Class</h3>
-                        </div>
-                        <p style="color: var(--text-secondary);">The decision-making unit. Combines sensor input with robot state to make navigation decisions.</p>
-                    </div>
-                </div>
-                
                 <div class="tech-stack">
-                    <span class="tech-tag">Python 3.x</span>
-                    <span class="tech-tag">Pygame</span>
-                    <span class="tech-tag">Object-Oriented Design</span>
-                    <span class="tech-tag">Simulation</span>
-                    <span class="tech-tag">Algorithm Design</span>
+                    <span class="tech-tag">Environment</span>
+                    <span class="tech-tag">Validation</span>
                 </div>
             </div>
-        </section>
-
-        <!-- OOP Principles -->
-        <section id="oop" class="fade-in">
-            <div class="dev-card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-cubes"></i>
-                    </div>
-                    <h2 class="card-title">OOP Principles Implemented</h2>
+            
+            <div class="card fade-in">
+                <div class="card-icon">
+                    <i class="fas fa-robot"></i>
                 </div>
-                
-                <div class="oop-principles">
-                    <div class="principle-card">
-                        <div class="principle-icon">
-                            <i class="fas fa-box"></i>
-                        </div>
-                        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Encapsulation</h3>
-                        <p style="color: var(--text-secondary);">Each class encapsulates its own data and methods. The Robot's position and direction are private attributes accessed only through controlled methods.</p>
-                    </div>
-                    
-                    <div class="principle-card">
-                        <div class="principle-icon">
-                            <i class="fas fa-eye-slash"></i>
-                        </div>
-                        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Abstraction</h3>
-                        <p style="color: var(--text-secondary);">Complex navigation logic is hidden behind simple interfaces. Users call `controller.navigate()` without knowing the internal decision-making process.</p>
-                    </div>
-                    
-                    <div class="principle-card">
-                        <div class="principle-icon">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Polymorphism</h3>
-                        <p style="color: var(--text-secondary);">Different navigation strategies can be implemented and switched at runtime while maintaining the same interface for movement.</p>
-                    </div>
-                    
-                    <div class="principle-card">
-                        <div class="principle-icon">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Inheritance</h3>
-                        <p style="color: var(--text-secondary);">The architecture supports inheritance for creating specialized robots (e.g., SmartRobot, SwarmRobot) with extended capabilities.</p>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 3rem; padding: 2rem; background: rgba(37, 99, 235, 0.1); border-radius: 15px; border: 1px solid rgba(37, 99, 235, 0.3);">
-                    <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Design Patterns Used</h3>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Model-View-Controller (MVC)</span>
-                        <span class="tech-tag">Strategy Pattern</span>
-                        <span class="tech-tag">Singleton Pattern</span>
-                        <span class="tech-tag">Observer Pattern</span>
-                    </div>
+                <h3 class="card-title">Robot Class</h3>
+                <p class="card-description">
+                    Autonomous agent with position tracking, directional movement, 
+                    and navigation logic. Core of the simulation.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Agent</span>
+                    <span class="tech-tag">Navigation</span>
                 </div>
             </div>
-        </section>
-
-        <!-- Code Preview -->
-        <section id="code" class="fade-in">
-            <div class="code-preview">
-                <div class="code-header">
-                    <div class="code-dot red"></div>
-                    <div class="code-dot yellow"></div>
-                    <div class="code-dot green"></div>
-                    <span style="margin-left: 1rem; color: var(--text-secondary); font-family: 'JetBrains Mono';">obstacle_navigation.py</span>
-                    <span style="margin-left: auto; color: var(--accent-green); font-family: 'JetBrains Mono'; font-size: 0.9rem;">
-                        <i class="fas fa-code"></i> Core OOP Implementation
-                    </span>
+            
+            <div class="card fade-in">
+                <div class="card-icon">
+                    <i class="fas fa-satellite-dish"></i>
                 </div>
-                <div class="code-content">
+                <h3 class="card-title">Sensor Class</h3>
+                <p class="card-description">
+                    Simulates obstacle detection capabilities. Provides environmental 
+                    awareness to the robot through sensor readings.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Detection</span>
+                    <span class="tech-tag">Sensing</span>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="card-title">Controller Class</h3>
+                <p class="card-description">
+                    Decision-making unit that processes sensor data and controls robot 
+                    movements. Implements the navigation algorithm.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Logic</span>
+                    <span class="tech-tag">Decision</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OOP Principles Section -->
+    <section class="section" id="oop" style="background: rgba(15, 23, 42, 0.5);">
+        <div class="section-header">
+            <span class="section-label">Core Concepts</span>
+            <h2 class="section-title">OOP Principles Implemented</h2>
+            <p class="section-subtitle">
+                Demonstration of fundamental Object-Oriented Programming concepts
+            </p>
+        </div>
+        
+        <div class="grid-4">
+            <div class="principle-card fade-in">
+                <div class="principle-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <h3 class="principle-title">Encapsulation</h3>
+                <p class="principle-description">
+                    Each class encapsulates its data and methods. Robot position and 
+                    direction are private attributes with controlled access.
+                </p>
+            </div>
+            
+            <div class="principle-card fade-in">
+                <div class="principle-icon">
+                    <i class="fas fa-eye-slash"></i>
+                </div>
+                <h3 class="principle-title">Abstraction</h3>
+                <p class="principle-description">
+                    Complex navigation logic is hidden behind simple interfaces. 
+                    Users interact with high-level methods without knowing implementation.
+                </p>
+            </div>
+            
+            <div class="principle-card fade-in">
+                <div class="principle-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3 class="principle-title">Polymorphism</h3>
+                <p class="principle-description">
+                    Multiple navigation strategies can be implemented with the same 
+                    interface. Different behaviors through the same method signatures.
+                </p>
+            </div>
+            
+            <div class="principle-card fade-in">
+                <div class="principle-icon">
+                    <i class="fas fa-sitemap"></i>
+                </div>
+                <h3 class="principle-title">Inheritance</h3>
+                <p class="principle-description">
+                    Architecture supports inheritance for specialized robots. 
+                    Base Robot class can be extended with additional capabilities.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Preview Section -->
+    <section class="section" id="code">
+        <div class="section-header">
+            <span class="section-label">Technical Implementation</span>
+            <h2 class="section-title">Core OOP Implementation</h2>
+            <p class="section-subtitle">
+                Clean, modular code following software engineering best practices
+            </p>
+        </div>
+        
+        <div class="code-preview fade-in">
+            <div class="code-header">
+                <div class="code-dot red"></div>
+                <div class="code-dot yellow"></div>
+                <div class="code-dot green"></div>
+                <span style="margin-left: 1rem; color: var(--text-secondary); font-family: 'JetBrains Mono';">obstacle_navigation.py</span>
+                <span style="margin-left: auto; color: var(--accent-success); font-family: 'JetBrains Mono'; font-size: 0.9rem;">
+                    <i class="fas fa-code"></i> Complete Implementation
+                </span>
+            </div>
+            <div class="code-content">
 <pre><span class="code-keyword">import</span> random
 <span class="code-keyword">import</span> time
 
@@ -842,13 +1280,10 @@
             print()
         print(<span class="code-string">"-"</span> <span class="code-operator">*</span> <span class="code-operator">20</span>)
 
-
 <span class="code-comment"># ================ SENSOR CLASS ================</span>
 <span class="code-keyword">class</span> <span class="code-class">ObstacleSensor</span>:
     <span class="code-keyword">def</span> <span class="code-function">detect</span>(<span class="code-keyword">self</span>, grid, x, y):
-        <span class="code-comment"># Abstraction: simple interface for detection</span>
         <span class="code-keyword">return</span> grid.is_obstacle(x, y)
-
 
 <span class="code-comment"># ================ ROBOT CLASS ================</span>
 <span class="code-keyword">class</span> <span class="code-class">Robot</span>:
@@ -858,7 +1293,6 @@
         <span class="code-keyword">self</span>.direction = random.choice([<span class="code-string">"up"</span>, <span class="code-string">"down"</span>, <span class="code-string">"left"</span>, <span class="code-string">"right"</span>])
 
     <span class="code-keyword">def</span> <span class="code-function">next_position</span>(<span class="code-keyword">self</span>):
-        <span class="code-comment"># Polymorphism: can be overridden for different movement strategies</span>
         <span class="code-keyword">if</span> <span class="code-keyword">self</span>.direction <span class="code-operator">==</span> <span class="code-string">"up"</span>:
             <span class="code-keyword">return</span> <span class="code-keyword">self</span>.x, <span class="code-keyword">self</span>.y <span class="code-operator">+</span> <span class="code-operator">1</span>
         <span class="code-keyword">elif</span> <span class="code-keyword">self</span>.direction <span class="code-operator">==</span> <span class="code-string">"down"</span>:
@@ -875,7 +1309,6 @@
     <span class="code-keyword">def</span> <span class="code-function">change_direction</span>(<span class="code-keyword">self</span>):
         <span class="code-keyword">self</span>.direction = random.choice([<span class="code-string">"up"</span>, <span class="code-string">"down"</span>, <span class="code-string">"left"</span>, <span class="code-string">"right"</span>])
 
-
 <span class="code-comment"># ================ CONTROLLER CLASS ================</span>
 <span class="code-keyword">class</span> <span class="code-class">Controller</span>:
     <span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-keyword">self</span>, robot, sensor, grid):
@@ -884,7 +1317,6 @@
         <span class="code-keyword">self</span>.grid = grid
 
     <span class="code-keyword">def</span> <span class="code-function">navigate</span>(<span class="code-keyword">self</span>):
-        <span class="code-comment"># Strategy Pattern: decision-making logic</span>
         nx, ny = <span class="code-keyword">self</span>.robot.next_position()
         <span class="code-keyword">if</span> <span class="code-keyword">self</span>.sensor.detect(<span class="code-keyword">self</span>.grid, nx, ny):
             print(<span class="code-string">"⚠ Obstacle detected → Changing direction"</span>)
@@ -892,7 +1324,6 @@
         <span class="code-keyword">else</span>:
             <span class="code-keyword">self</span>.robot.move()
             print(<span class="code-string">f"✅ Robot moved </span><span class="code-keyword">{self</span>.robot.direction<span class="code-keyword">}"</span>)
-
 
 <span class="code-comment"># ================ MAIN PROGRAM ================</span>
 <span class="code-comment"># Object Creation and Interaction</span>
@@ -907,253 +1338,294 @@ controller = Controller(robot, sensor, grid)
     controller.navigate()
     grid.display(robot)
     time.sleep(<span class="code-operator">1</span>)</pre>
-                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Working Algorithm -->
-        <section class="fade-in">
-            <div class="dev-card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h2 class="card-title">Working Algorithm</h2>
+    <!-- Working Algorithm Section -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Navigation Logic</span>
+            <h2 class="section-title">Working Algorithm</h2>
+            <p class="section-subtitle">
+                Step-by-step process of how the robot makes intelligent navigation decisions
+            </p>
+        </div>
+        
+        <div class="algorithm-steps">
+            <div class="step-card fade-in">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Sense the Environment</h4>
+                    <p>Robot uses its sensor to detect obstacles in the next position before moving</p>
                 </div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;">
-                    <div>
-                        <h3 style="color: var(--accent-green); margin-bottom: 1.5rem;">Navigation Logic</h3>
-                        <div style="background: rgba(30, 41, 59, 0.5); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
-                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                                <div style="width: 30px; height: 30px; background: var(--accent-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <span style="color: white; font-weight: bold;">1</span>
-                                </div>
-                                <h4 style="color: var(--text-primary);">Sense</h4>
-                            </div>
-                            <p style="color: var(--text-secondary);">Robot uses its sensor to detect obstacles in the next position</p>
-                        </div>
-                        
-                        <div style="background: rgba(30, 41, 59, 0.5); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
-                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                                <div style="width: 30px; height: 30px; background: var(--accent-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <span style="color: white; font-weight: bold;">2</span>
-                                </div>
-                                <h4 style="color: var(--text-primary);">Decide</h4>
-                            </div>
-                            <p style="color: var(--text-secondary);">Controller analyzes sensor data and decides movement strategy</p>
-                        </div>
-                        
-                        <div style="background: rgba(30, 41, 59, 0.5); padding: 1.5rem; border-radius: 10px;">
-                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                                <div style="width: 30px; height: 30px; background: var(--accent-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <span style="color: white; font-weight: bold;">3</span>
-                                </div>
-                                <h4 style="color: var(--text-primary);">Act</h4>
-                            </div>
-                            <p style="color: var(--text-secondary);">Robot executes movement command (move forward or change direction)</p>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h3 style="color: var(--accent-green); margin-bottom: 1.5rem;">Flow Diagram</h3>
-                        <div style="background: rgba(30, 41, 59, 0.5); padding: 2rem; border-radius: 10px; height: 100%;">
-                            <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
-                                <div style="width: 100%; padding: 1rem; background: rgba(16, 185, 129, 0.2); border-radius: 8px; text-align: center;">
-                                    <strong style="color: var(--accent-green);">START</strong><br>
-                                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Robot at position (0,0)</span>
-                                </div>
-                                
-                                <div style="display: flex; align-items: center; gap: 1rem; width: 100%;">
-                                    <i class="fas fa-arrow-down" style="color: var(--accent-blue);"></i>
-                                    <div style="flex: 1; text-align: center; padding: 1rem; background: rgba(37, 99, 235, 0.2); border-radius: 8px;">
-                                        <strong style="color: var(--accent-blue);">SENSE → DECIDE → ACT</strong>
-                                    </div>
-                                </div>
-                                
-                                <div style="width: 100%; padding: 1rem; background: rgba(139, 92, 246, 0.2); border-radius: 8px; text-align: center;">
-                                    <strong style="color: var(--accent-purple);">CHECK OBSTACLE</strong><br>
-                                    <span style="color: var(--text-secondary); font-size: 0.9rem;">If obstacle → change direction<br>If clear → move forward</span>
-                                </div>
-                                
-                                <div style="display: flex; align-items: center; gap: 1rem; width: 100%;">
-                                    <i class="fas fa-redo" style="color: var(--accent-green);"></i>
-                                    <div style="flex: 1; text-align: center; padding: 1rem; background: rgba(16, 185, 129, 0.2); border-radius: 8px;">
-                                        <strong style="color: var(--accent-green);">REPEAT 20 STEPS</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Demo Section -->
-        <section id="demo" class="fade-in">
-            <div class="demo-container">
-                <h2 style="color: var(--text-primary); margin-bottom: 1rem; font-family: 'Orbitron', sans-serif;">Live Simulation Demo</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Visual representation of the robot navigating through obstacles</p>
-                
-                <div class="demo-grid" id="demoGrid">
-                    <!-- Grid will be generated by JavaScript -->
-                </div>
-                
-                <div style="margin-top: 2rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
-                    <div style="text-align: center;">
-                        <div style="width: 20px; height: 20px; background: #2563eb; border-radius: 4px; margin: 0 auto 0.5rem;"></div>
-                        <span style="color: var(--text-secondary); font-size: 0.9rem;">Robot</span>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="width: 20px; height: 20px; background: #ef4444; border-radius: 4px; margin: 0 auto 0.5rem;"></div>
-                        <span style="color: var(--text-secondary); font-size: 0.9rem;">Obstacle</span>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="width: 20px; height: 20px; background: rgba(16, 185, 129, 0.3); border-radius: 4px; margin: 0 auto 0.5rem;"></div>
-                        <span style="color: var(--text-secondary); font-size: 0.9rem;">Visited</span>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 2rem;">
-                    <button onclick="runSimulation()" style="background: var(--gradient-1); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-family: 'JetBrains Mono', monospace; cursor: pointer; transition: transform 0.3s;">
-                        <i class="fas fa-play"></i> Run Simulation
-                    </button>
-                    <button onclick="resetSimulation()" style="background: rgba(255, 255, 255, 0.1); color: var(--text-primary); border: none; padding: 1rem 2rem; border-radius: 8px; font-family: 'JetBrains Mono', monospace; cursor: pointer; margin-left: 1rem; transition: transform 0.3s;">
-                        <i class="fas fa-redo"></i> Reset
-                    </button>
-                </div>
-                
-                <div style="margin-top: 2rem; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;" id="simulationStatus">
-                    Click "Run Simulation" to start
-                </div>
-            </div>
-        </section>
-
-        <!-- Features -->
-        <section class="fade-in">
-            <div class="dev-card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h2 class="card-title">Key Features</h2>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                    <div style="padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                        <i class="fas fa-cogs" style="color: var(--accent-green); font-size: 2rem; margin-bottom: 1rem;"></i>
-                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Dual Display Modes</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Console-based text visualization and PyGame graphical interface</p>
-                    </div>
-                    
-                    <div style="padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                        <i class="fas fa-robot" style="color: var(--accent-blue); font-size: 2rem; margin-bottom: 1rem;"></i>
-                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Modular Design</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Separate classes for Grid, Robot, Sensor, and Controller</p>
-                    </div>
-                    
-                    <div style="padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                        <i class="fas fa-sync-alt" style="color: var(--accent-purple); font-size: 2rem; margin-bottom: 1rem;"></i>
-                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Real-time Decision</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Dynamic obstacle detection and avoidance at each step</p>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 3rem; padding: 2rem; background: rgba(139, 92, 246, 0.1); border-radius: 15px; border: 1px solid rgba(139, 92, 246, 0.3);">
-                    <h3 style="color: var(--accent-purple); margin-bottom: 1rem;">Learning Outcomes</h3>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Class Design</span>
-                        <span class="tech-tag">Object Interaction</span>
-                        <span class="tech-tag">Encapsulation</span>
-                        <span class="tech-tag">Polymorphism</span>
-                        <span class="tech-tag">Simulation Design</span>
-                        <span class="tech-tag">Algorithm Implementation</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="dev-footer" id="contact">
-        <div class="footer-grid">
-            <div class="footer-section">
-                <h3>Project Details</h3>
-                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
-                    Obstacle-Aware Navigation System<br>
-                    Object-Oriented Programming Course Project<br>
-                    3rd Semester
-                </p>
-                <p style="color: var(--text-secondary);">
-                    Academic Year: 2025-2026<br>
-                    KLE Technological University
-                </p>
             </div>
             
-            <div class="footer-section">
-                <h3>Student Information</h3>
-                <p style="color: var(--text-secondary); line-height: 1.8;">
-                    <strong style="color: var(--text-primary);">GAJANAN PAWAR</strong><br>
-                    Automation & Robotics Engineering<br>
-                    KLE Technological University<br>
-                    Hubli, Karnataka
-                </p>
+            <div class="step-card fade-in">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Decision Making</h4>
+                    <p>Controller analyzes sensor data and decides the appropriate movement strategy</p>
+                </div>
             </div>
             
-            <div class="footer-section">
-                <h3>Connect</h3>
-                <div class="social-links">
-                    <a href="https://github.com/GAJANANPAWAR-AR" class="social-link" title="GitHub" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/" class="social-link" title="LinkedIn" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="mailto:gajananpawar@example.com" class="social-link" title="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="#" class="social-link" title="Portfolio">
-                        <i class="fas fa-globe"></i>
-                    </a>
+            <div class="step-card fade-in">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Obstacle Avoidance</h4>
+                    <p>If obstacle detected, robot changes direction randomly to find a clear path</p>
+                </div>
+            </div>
+            
+            <div class="step-card fade-in">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Movement Execution</h4>
+                    <p>If path is clear, robot moves forward in the current direction</p>
+                </div>
+            </div>
+            
+            <div class="step-card fade-in">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h4>Continuous Loop</h4>
+                    <p>Process repeats for 20 steps, creating a complete navigation simulation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="section" id="demo">
+        <div class="section-header">
+            <span class="section-label">Interactive Demo</span>
+            <h2 class="section-title">Live Simulation</h2>
+            <p class="section-subtitle">
+                Experience the navigation system in action with this interactive demonstration
+            </p>
+        </div>
+        
+        <div class="demo-container fade-in">
+            <h3 style="color: var(--text-primary); margin-bottom: 1rem; font-family: 'Space Grotesk', sans-serif;">Live Robot Navigation Demo</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Watch the robot navigate through obstacles in real-time</p>
+            
+            <div class="demo-grid" id="demoGrid">
+                <!-- Grid will be generated by JavaScript -->
+            </div>
+            
+            <div style="margin-top: 2rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <div style="width: 20px; height: 20px; background: #2563eb; border-radius: 4px; margin: 0 auto 0.5rem;"></div>
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Robot</span>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 20px; height: 20px; background: #ef4444; border-radius: 4px; margin: 0 auto 0.5rem;"></div>
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Obstacle</span>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 20px; height: 20px; background: rgba(16, 185, 129, 0.3); border-radius: 4px; margin: 0 auto 0.5rem;"></div>
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Visited</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <button onclick="runSimulation()" style="background: var(--gradient-primary); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; transition: transform 0.3s; display: flex; align-items: center; gap: 0.5rem; margin: 0 auto;">
+                    <i class="fas fa-play"></i> Run Simulation (20 Steps)
+                </button>
+                <button onclick="resetSimulation()" style="background: rgba(255, 255, 255, 0.1); color: var(--text-primary); border: none; padding: 1rem 2rem; border-radius: 8px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; margin-left: 1rem; transition: transform 0.3s; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-redo"></i> Reset Simulation
+                </button>
+            </div>
+            
+            <div style="margin-top: 2rem; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px;" id="simulationStatus">
+                Click "Run Simulation" to start the navigation demo
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="section-header">
+            <span class="section-label">Get In Touch</span>
+            <h2 class="section-title">Contact Information</h2>
+            <p class="section-subtitle">
+                Feel free to reach out for project inquiries or collaboration opportunities
+            </p>
+        </div>
+        
+        <div class="contact-section">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-label">Student Information</span>
+                            <span class="contact-value">GAJANAN PAWAR</span>
+                            <span class="contact-value" style="font-size: 0.95rem; color: var(--text-secondary);">
+                                Automation & Robotics Engineering
+                            </span>
+                            <span class="contact-value" style="font-size: 0.95rem; color: var(--text-secondary);">
+                                KLE Technological University, Hubli
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-label">Academic Email</span>
+                            <a href="mailto:01fe24bar015@kletech.ac.in" class="contact-value">
+                                01fe24bar015@kletech.ac.in
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-label">Phone Number</span>
+                            <a href="tel:+919986853054" class="contact-value">
+                                +91 9986853054
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-label">GitHub Profile</span>
+                            <a href="https://github.com/GAJANANPAWAR-AR" target="_blank" class="contact-value">
+                                github.com/GAJANANPAWAR-AR
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/GAJANANPAWAR-AR" target="_blank" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in" target="_blank" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:01fe24bar015@kletech.ac.in" class="social-link" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+919986853054" class="social-link" title="Phone">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <div style="margin-top: 2rem;">
-                    <a href="https://github.com/GAJANANPAWAR-AR/obstacle-navigation-oops" 
-                       style="color: var(--accent-green); text-decoration: none; font-family: 'JetBrains Mono'; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem;" target="_blank">
-                        <i class="fab fa-github"></i> View on GitHub
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <h3 class="card-title">Project Inquiry</h3>
+                    <p class="card-description">
+                        Interested in this project or want to collaborate? I'm open to discussing:
+                    </p>
+                    <ul style="color: var(--text-secondary); line-height: 1.8; margin: 1rem 0 2rem 1.5rem;">
+                        <li>Technical implementation details</li>
+                        <li>Academic collaborations</li>
+                        <li>Research opportunities</li>
+                        <li>Project extensions</li>
+                    </ul>
+                    <a href="mailto:01fe24bar015@kletech.ac.in?subject=OOP%20Project%20Inquiry&body=Dear%20Gajanan,%0A%0AI'm%20interested%20in%20your%20Obstacle-Aware%20Navigation%20System%20project." 
+                       class="btn-primary" style="width: 100%; text-align: center; justify-content: center;">
+                        <i class="fas fa-envelope"></i> Send Email
                     </a>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Project Details</h3>
+                <ul class="footer-links">
+                    <li><a href="#overview" class="footer-link">System Overview</a></li>
+                    <li><a href="#architecture" class="footer-link">Architecture</a></li>
+                    <li><a href="#oop" class="footer-link">OOP Principles</a></li>
+                    <li><a href="#code" class="footer-link">Implementation</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Technical Stack</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Python Programming</a></li>
+                    <li><a href="#" class="footer-link">Object-Oriented Design</a></li>
+                    <li><a href="#" class="footer-link">Simulation Development</a></li>
+                    <li><a href="#" class="footer-link">Algorithm Design</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Academic Information</h3>
+                <ul class="footer-links">
+                    <li><span style="color: var(--text-secondary); font-size: 0.9rem;">KLE Technological University</span></li>
+                    <li><span style="color: var(--text-secondary); font-size: 0.9rem;">Automation & Robotics Engineering</span></li>
+                    <li><span style="color: var(--text-secondary); font-size: 0.9rem;">3rd Semester OOP Course</span></li>
+                    <li><span style="color: var(--text-secondary); font-size: 0.9rem;">Academic Year 2025-2026</span></li>
+                </ul>
+            </div>
+        </div>
         
-        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-            <p style="color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
-                © 2025 Obstacle-Aware Navigation System | OOP Project
-            </p>
-            <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 1rem;">
-                A demonstration of Object-Oriented Programming principles in robotics simulation
-            </p>
+        <div class="copyright">
+            <p>&copy; 2025 Obstacle-Aware Navigation System | Object-Oriented Programming Project</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">Developed by GAJANAN PAWAR | KLE Technological University, Hubli</p>
         </div>
     </footer>
 
     <script>
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Fade in elements on scroll
-            const fadeElements = document.querySelectorAll('.fade-in');
-            const fadeObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            fadeElements.forEach(el => fadeObserver.observe(el));
-            
-            // Initialize demo grid
-            initializeDemoGrid();
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
         });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Fade in animations on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => fadeObserver.observe(el));
 
         // Demo Grid Simulation
         let robotPosition = { x: 0, y: 4 }; // Bottom-left corner (0,4)
@@ -1308,45 +1780,38 @@ controller = Controller(robot, sensor, grid)
             initializeDemoGrid();
         }
 
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Animate stats counter
-        function animateCounter(element, target, duration) {
-            let start = 0;
-            const increment = target / (duration / 16);
-            
-            function update() {
-                start += increment;
-                if (start < target) {
-                    element.textContent = Math.floor(start);
-                    requestAnimationFrame(update);
-                } else {
-                    element.textContent = target;
-                }
-            }
-            update();
-        }
-
-        // Initialize stats animation
+        // Initialize grid on load
         document.addEventListener('DOMContentLoaded', () => {
+            initializeDemoGrid();
+            
+            // Animate stats
             const stats = document.querySelectorAll('.stat-number');
             stats.forEach(stat => {
                 const value = parseInt(stat.textContent);
-                animateCounter(stat, value, 2000);
+                let start = 0;
+                const duration = 2000;
+                const increment = value / (duration / 16);
+                
+                function update() {
+                    start += increment;
+                    if (start < value) {
+                        stat.textContent = Math.floor(start);
+                        requestAnimationFrame(update);
+                    } else {
+                        stat.textContent = value;
+                    }
+                }
+                update();
             });
         });
+
+        // Copy contact info to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard: ' + text);
+            });
+        }
     </script>
 </body>
+</html>
 </html>
